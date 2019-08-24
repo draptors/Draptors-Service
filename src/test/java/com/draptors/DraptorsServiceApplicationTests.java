@@ -1,4 +1,4 @@
-package com.draptors.DraptorsService;
+package com.draptors;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

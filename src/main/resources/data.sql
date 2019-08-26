@@ -1,8 +1,10 @@
-insert into test_entity values (101, 'test');
-insert into test_entity values (102, 'test');
-insert into test_entity values (103, 'test');
-insert into test_entity values (104, 'test');
-insert into test_entity values (105, 'test');
-insert into test_entity values (106, 'test');
-insert into test_entity values (107, 'test');
-insert into test_entity values (108, 'test');
+INSERT INTO QUESTIONS_ENTITY values (1, 'Is India''s GDP is growing well?', 15);
+INSERT INTO QUESTIONS_ENTITY values (2, 'How many colors in india''s flag?', 15);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (1, 'Agree', 1);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (2, 'Disagree', 1);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (3, 'Neutral', 1);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (4, 'Not willing to Answer', 1);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (1, '1', 2);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (2, '2', 2);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (3, '3', 2);
+INSERT INTO OPTIONS_ENTITY(OPTION_ID, OPTION_DESC, QUES_ID) values (4, '4', 2);

@@ -3,12 +3,15 @@ package com.draptors.controller;
 import com.draptors.config.ApplicationConstants;
 import com.draptors.domain.*;
 import com.draptors.model.SurveyResponse;
+import com.draptors.model.SurveyResponseResult;
 import com.draptors.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
@@ -34,6 +37,7 @@ public class ServeyController {
     @Autowired
     UserResponseRepository userResponseRepository;
 
+    @CrossOrigin
     @RequestMapping("/registration")
     @ResponseBody
     public SurveyResponse registration(UserDetailsEntity userDetailsEntity) {
@@ -49,9 +53,10 @@ public class ServeyController {
         return res;
     }
 
+    @CrossOrigin
     @RequestMapping("/listQuestions")
     @ResponseBody
-    public List<QuestionsEntity> listQuestions(UserDetailsEntity userDetailsEntity) {
+    public List<QuestionsEntity> listQuestions() {
         List<QuestionsEntity> list = null;
         try {
             list = (List<QuestionsEntity>) questionsRepository.findAll();
@@ -61,6 +66,7 @@ public class ServeyController {
         return list;
     }
 
+    @CrossOrigin
     @RequestMapping("/createSurvey")
     @ResponseBody
     public SurveyResponse createSurvey(SurveyEntity surveyEntity) {
@@ -83,6 +89,7 @@ public class ServeyController {
         return res;
     }
 
+    @CrossOrigin
     @RequestMapping("/getActiveSurvey")
     @ResponseBody
     public QuestionsEntity getActiveSurvey(UserDetailsEntity userDetailsEntity) {
@@ -102,6 +109,7 @@ public class ServeyController {
         return questionsEntity;
     }
 
+    @CrossOrigin
     @RequestMapping("/submitSurvey")
     @ResponseBody
     public SurveyResponse submitSurvey(UserResponseEntity userResponseEntity) {
@@ -119,5 +127,18 @@ public class ServeyController {
             res.setStatus(ApplicationConstants.FAILURE);
         }
         return res;
+    }
+
+    @CrossOrigin
+    @RequestMapping("/getSurveyResult")
+    @ResponseBody
+    public List<SurveyResponseResult> getSurveyResult(@RequestParam("surveyId") int surveyId) {
+        List<SurveyResponseResult> list = null;
+        try {
+            list = userResponseRepository.getSurveyResponseResult(surveyId);
+        } catch ( Exception ex ) {
+            log.error("Error in listQuestions");
+        }
+        return list;
     }
 }
